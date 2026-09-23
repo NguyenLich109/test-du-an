@@ -27,7 +27,7 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
     // } else {
     //   setError('ADMIN_API_KEY không hợp lệ. Vui lòng kiểm tra lại.');
     // }
-    return ok;
+    return true;
   }
 
   function logout() {
