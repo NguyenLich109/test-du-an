@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { AdminAuthProvider, useAdminAuth } from './context/AdminAuthContext';
 
@@ -20,9 +20,8 @@ function RequireAuth({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }
 
-export default function App() {
-  return (
-    <BrowserRouter>
+const router = createBrowserRouter(
+    createRoutesFromElements(
       <AdminAuthProvider>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
@@ -41,6 +40,13 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AdminAuthProvider>
-    </BrowserRouter>
+    )
+  )
+
+export default function App() {
+  return (
+    <AdminAuthProvider>
+      <RouterProvider router={router} />
+    </AdminAuthProvider>
   );
 }
