@@ -22,24 +22,24 @@ function RequireAuth({ children }: { children: ReactNode }) {
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-      <AdminAuthProvider>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-
-          <Route path="/" element={<RequireAuth><DashboardPage /></RequireAuth>} />
-          <Route path="/organizations" element={<RequireAuth><OrganizationsPage /></RequireAuth>} />
-          <Route path="/organizations/:orgId" element={<RequireAuth><OrganizationDetailPage /></RequireAuth>} />
-          <Route path="/users" element={<RequireAuth><UsersPage /></RequireAuth>} />
-          <Route path="/roles" element={<RequireAuth><RolesPage /></RequireAuth>} />
-          <Route path="/audit-log" element={<RequireAuth><AuditLogPage /></RequireAuth>} />
-          <Route path="/sessions" element={<RequireAuth><SessionsPage /></RequireAuth>} />
-          <Route path="/mfa" element={<RequireAuth><MfaSettingsPage /></RequireAuth>} />
-          <Route path="/settings" element={<RequireAuth><SettingsPage /></RequireAuth>} />
-          <Route path="/admins" element={<RequireAuth><AdminsPage /></RequireAuth>} />
-
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </AdminAuthProvider>
+      <Route path="/">
+        <Route path="/" element={<RequireAuth><DashboardPage /></RequireAuth>} />
+        <Route path="/organizations" element={<RequireAuth><OrganizationsPage /></RequireAuth>} />
+        <Route path="/organizations/:orgId" element={<RequireAuth><OrganizationDetailPage /></RequireAuth>} />
+        <Route path="/users" element={<RequireAuth><UsersPage /></RequireAuth>} />
+        <Route path="/roles" element={<RequireAuth><RolesPage /></RequireAuth>} />
+        <Route path="/audit-log" element={<RequireAuth><AuditLogPage /></RequireAuth>} />
+        <Route path="/sessions" element={<RequireAuth><SessionsPage /></RequireAuth>} />
+        <Route path="/mfa" element={<RequireAuth><MfaSettingsPage /></RequireAuth>} />
+        <Route path="/settings" element={<RequireAuth><SettingsPage /></RequireAuth>} />
+        <Route path="/admins" element={<RequireAuth><AdminsPage /></RequireAuth>} />
+        
+        <Route path="auth" element={<AuthLayout />}>
+          <Route index element={<LoginPage />} />
+          <Route path="login" element={<LoginPage />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
     )
   )
 
