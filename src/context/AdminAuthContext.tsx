@@ -20,6 +20,7 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
     setLoading(true);
     setError(null);
     // const ok = await verifyAdminKey(key);
+    localStorage.setItem('login', 'true');
     setLoading(false);
     setIsAuthenticated(true);
     // if (ok) {

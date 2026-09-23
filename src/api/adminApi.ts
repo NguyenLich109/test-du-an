@@ -75,7 +75,8 @@ export function logoutAdmin() {
 }
 
 export function isAdminAuthenticated(): boolean {
-  return !!getAdminKey();
+  const login = localStorage.getItem('login');
+  return !!login;
 }
 
 // ---------- Organizations ----------
