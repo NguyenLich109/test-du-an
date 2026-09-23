@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Routes, Route, Navigate, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { AdminAuthProvider, useAdminAuth } from './context/AdminAuthContext';
 
